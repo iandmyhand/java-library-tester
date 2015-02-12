@@ -13,7 +13,7 @@
 		
 		<commons.lang.version>2.6</commons.lang.version>
 		
-		<!-- Test -->
+		<!-- Test Util -->
 		<mockito.version>1.9.0</mockito.version>
 		<junit.version>4.11</junit.version>
 		
@@ -22,8 +22,12 @@
 		<guava.version>17.0</guava.version>
 		<hamcrest.library.version>1.3</hamcrest.library.version>
 		
-		<!-- jackson -->
+		<!-- Json Util -->
 		<jackson.mapper.asl.version>1.8.5</jackson.mapper.asl.version>
+		
+		<!-- Logging Util -->
+		<slf4j.version>1.6.6</slf4j.version>
+		<log4j.version>1.2.17</log4j.version>
 	</properties>
 
 	<repositories>
@@ -46,7 +50,7 @@
 			<version>${commons.lang.version}</version>
 		</dependency>
 		
-		<!-- Test -->
+		<!-- Test Util -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -61,7 +65,7 @@
 			<scope>test</scope>
 		</dependency>
 	
-		<!-- jackson -->
+		<!-- Json Util -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
@@ -95,6 +99,48 @@
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest-library</artifactId>
 			<version>${hamcrest.library.version}</version>
+		</dependency>
+
+		<!-- Logging Util -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.mail</groupId>
+					<artifactId>mail</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jdmk</groupId>
+					<artifactId>jmxtools</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sun.jmx</groupId>
+					<artifactId>jmxri</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 	</dependencies>
