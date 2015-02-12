@@ -22,7 +22,6 @@ public class User extends BaseObject {
 	};
 
 	public User() {
-
 	}
 
 	public User(String name, Integer age) {

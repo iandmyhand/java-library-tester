@@ -13,6 +13,9 @@ import org.junit.Test;
 
 import practice.hard.commons.User;
 
+/**
+ * @author SeomGi, Han(iandmyhand@gmail.com)
+ */
 public class JacksonTester {
 
 	private static final String PATHNAME = "user.json";

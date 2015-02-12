@@ -6,6 +6,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * @author SeomGi, Han(iandmyhand@gmail.com)
+ */
 public class Slf4jTester {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
