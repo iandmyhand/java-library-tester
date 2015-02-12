@@ -4,27 +4,28 @@
 	<groupId>test</groupId>
 	<artifactId>java-tester</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<properties>
 		<java-version>1.7</java-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<source-encoding>UTF-8</source-encoding>
 		<resource-encoding>UTF-8</resource-encoding>
-		
+
 		<commons.lang.version>2.6</commons.lang.version>
-		
+
 		<!-- Test Util -->
 		<mockito.version>1.9.0</mockito.version>
 		<junit.version>4.11</junit.version>
-		
+
 		<!-- Collections Util -->
 		<lambdaj.version>2.4</lambdaj.version>
 		<guava.version>17.0</guava.version>
 		<hamcrest.library.version>1.3</hamcrest.library.version>
-		
+		<cglib.version>2.2.2</cglib.version>
+
 		<!-- Json Util -->
 		<jackson.mapper.asl.version>1.8.5</jackson.mapper.asl.version>
-		
+
 		<!-- Logging Util -->
 		<slf4j.version>1.6.6</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
@@ -49,7 +50,7 @@
 			<artifactId>commons-lang</artifactId>
 			<version>${commons.lang.version}</version>
 		</dependency>
-		
+
 		<!-- Test Util -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -64,7 +65,7 @@
 			<version>${mockito.version}</version>
 			<scope>test</scope>
 		</dependency>
-	
+
 		<!-- Json Util -->
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
@@ -93,6 +94,12 @@
 			<artifactId>guava</artifactId>
 			<version>${guava.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${cglib.version}</version>
+		</dependency>
+
 
 		<!-- Hamcrest Matcher -->
 		<dependency>
