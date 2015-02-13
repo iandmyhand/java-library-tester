@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)
  */
-public class User extends BaseObject {
+public class User extends BasisObject {
 
 	private static final long serialVersionUID = 7306465203093336101L;
 
