@@ -1,4 +1,4 @@
-package practice.hard.slf4j;
+package study.hard.slf4j;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.junit.Before;

@@ -1,4 +1,4 @@
-package practice.hard.commons;
+package study.hard.commons;
 
 import java.util.ArrayList;
 import java.util.List;

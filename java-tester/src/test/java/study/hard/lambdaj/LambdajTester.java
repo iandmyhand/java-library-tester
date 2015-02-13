@@ -1,4 +1,4 @@
-package practice.hard.lambdaj;
+package study.hard.lambdaj;
 
 import static ch.lambdaj.Lambda.*;
 import static org.hamcrest.Matchers.*;
@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import practice.hard.commons.User;
+import study.hard.commons.User;
 
 import com.google.common.collect.Lists;
 
@@ -29,9 +29,22 @@ public class LambdajTester {
 			userList.add(user);
 		}
 
-		System.out.println("==================================================");
-		System.out.println("User list: " + userList);
-		System.out.println("==================================================");
+		println("Sample list:", userList);
+	}
+
+	@Test
+	public void testSelectWithOneCondition() {
+		String name = "Tester1";
+		List<User> selectedList = select
+			(
+				userList,
+				having(
+					on(User.class).getName(),
+					equalTo(name)
+				)
+			);
+
+		println("test to select with one condition:", selectedList);
 	}
 
 	@Test
@@ -53,8 +66,14 @@ public class LambdajTester {
 			)
 			);
 
+		println("Test ordering comparison:", selectedList);
+	}
+
+	private void println(String title, List<User> userList) {
 		System.out.println("==================================================");
-		System.out.println("Selected user list: " + selectedList);
+		System.out.println(title);
+		System.out.println("--------------------------------------------------");
+		System.out.println("User list: " + userList);
 		System.out.println("==================================================");
 	}
 }

@@ -1,4 +1,4 @@
-package practice.hard.commons;
+package study.hard.commons;
 
 import java.io.Serializable;
 
