@@ -4,11 +4,13 @@ import static ch.lambdaj.Lambda.*;
 import static org.hamcrest.Matchers.*;
 
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import study.hard.commons.User;
+import ch.lambdaj.group.Group;
 
 import com.google.common.collect.Lists;
 
@@ -50,30 +52,51 @@ public class LambdajTester {
 	@Test
 	public void testOrderingComparison() {
 		String name = "Tester1";
-		List<User> selectedList = select(
-			userList,
-			allOf(
-				having(
-					on(User.class).getName(),
-					equalTo(name)),
-				having(
-					on(User.class).getAge(),
-					allOf(
-						greaterThanOrEqualTo(21),
-						lessThanOrEqualTo(23)
+		List<User> selectedList = select
+			(
+				userList,
+				allOf(
+					having(
+						on(User.class).getName(),
+						equalTo(name)),
+					having(
+						on(User.class).getAge(),
+						allOf(
+							greaterThanOrEqualTo(21),
+							lessThanOrEqualTo(23)
+						)
 					)
 				)
-			)
 			);
 
 		println("Test ordering comparison:", selectedList);
 	}
 
-	private void println(String title, List<User> userList) {
+	@Test
+	public void testGrouping() {
+		Group<User> groupAgeOfUser = group
+			(
+				userList,
+				by(on(User.class).getAge())
+			);
+		Set<String> groupAgeKeys = groupAgeOfUser.keySet();
+
+		println("group keys:", groupAgeKeys);
+
+		for (String ageKey : groupAgeKeys) {
+			println("age key:", ageKey);
+			println("size of group by age key[" + ageKey + "]:", groupAgeOfUser.find(ageKey).size());
+			for (User user : groupAgeOfUser.find(ageKey)) {
+				println("user:", user);
+			}
+		}
+	}
+
+	private void println(String title, Object object) {
 		System.out.println("==================================================");
 		System.out.println(title);
 		System.out.println("--------------------------------------------------");
-		System.out.println("User list: " + userList);
+		System.out.println("result: " + object);
 		System.out.println("==================================================");
 	}
 }
