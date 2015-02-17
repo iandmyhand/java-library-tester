@@ -2,7 +2,10 @@ package study.hard.lambdaj;
 
 import static ch.lambdaj.Lambda.*;
 import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -32,6 +35,8 @@ public class LambdajTester {
 		}
 
 		println("Sample list:", userList);
+
+		assertTrue(10 == userList.size());
 	}
 
 	@Test
@@ -47,6 +52,8 @@ public class LambdajTester {
 			);
 
 		println("test to select with one condition:", selectedList);
+
+		assertTrue(5 == selectedList.size());
 	}
 
 	@Test
@@ -70,6 +77,8 @@ public class LambdajTester {
 			);
 
 		println("Test ordering comparison:", selectedList);
+
+		assertTrue(3 == selectedList.size());
 	}
 
 	@Test
@@ -80,8 +89,8 @@ public class LambdajTester {
 				by(on(User.class).getAge())
 			);
 		Set<String> groupAgeKeys = groupAgeOfUser.keySet();
-
 		println("group keys:", groupAgeKeys);
+		assertTrue(3 == groupAgeKeys.size());
 
 		for (String ageKey : groupAgeKeys) {
 			println("age key:", ageKey);
@@ -90,6 +99,14 @@ public class LambdajTester {
 				println("user:", user);
 			}
 		}
+	}
+
+	@Test
+	public void testSelectDistinct() {
+		List<User> distinctedUserList = new ArrayList<User>(new HashSet<User>(userList));
+		println("distinctedUserList: ", distinctedUserList);
+
+		assertTrue(6 == distinctedUserList.size());
 	}
 
 	private void println(String title, Object object) {
