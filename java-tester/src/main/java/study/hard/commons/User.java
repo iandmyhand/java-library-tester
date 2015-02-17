@@ -1,6 +1,7 @@
 package study.hard.commons;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,13 +21,20 @@ public class User extends BasisObject {
 			add("msg 3");
 		}
 	};
+	private Date registYmdt;
 
 	public User() {
 	}
 
 	public User(String name, Integer age) {
+		super();
 		this.name = name;
 		this.age = age;
+	}
+
+	public User(String name, Integer age, Date registYmdt) {
+		this(name, age);
+		this.registYmdt = registYmdt;
 	}
 
 	public String getName() {
@@ -51,6 +59,14 @@ public class User extends BasisObject {
 
 	public void setMessages(List<String> messages) {
 		this.messages = messages;
+	}
+
+	public Date getRegistYmdt() {
+		return registYmdt;
+	}
+
+	public void setRegistYmdt(Date registYmdt) {
+		this.registYmdt = registYmdt;
 	}
 
 }

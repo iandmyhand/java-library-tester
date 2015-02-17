@@ -5,10 +5,12 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.time.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,6 +25,7 @@ import com.google.common.collect.Lists;
 public class LambdajTester {
 
 	private List<User> userList;
+	private Date now = new Date();
 
 	@Before
 	public void setUp() {
@@ -30,7 +33,7 @@ public class LambdajTester {
 
 		// Add the 10 users.
 		for (int i = 1; i <= 10; i++) {
-			User user = new User("Tester" + (i % 2), 20 + (i % 3));
+			User user = new User("Tester" + (i % 2), 20 + (i % 3), DateUtils.addDays(now, -(i % 3)));
 			userList.add(user);
 		}
 
@@ -79,6 +82,33 @@ public class LambdajTester {
 		println("Test ordering comparison:", selectedList);
 
 		assertTrue(3 == selectedList.size());
+	}
+
+	@Test
+	public void testOrderingComparisonWithDate() {
+		String name = "Tester1";
+		println("greaterThanOrEqualTo: ", DateUtils.addHours(now, -1));
+		println("lessThanOrEqualTo: ", DateUtils.addHours(now, 1));
+		List<User> selectedList = select
+			(
+				userList,
+				allOf(
+					having(
+						on(User.class).getName(),
+						equalTo(name)),
+					having(
+						on(User.class).getRegistYmdt(),
+						allOf(
+							greaterThanOrEqualTo(DateUtils.addHours(now, -1)),
+							lessThanOrEqualTo(DateUtils.addHours(now, 1))
+						)
+					)
+				)
+			);
+
+		println("Test ordering comparison:", selectedList);
+
+		assertTrue(2 == selectedList.size());
 	}
 
 	@Test
