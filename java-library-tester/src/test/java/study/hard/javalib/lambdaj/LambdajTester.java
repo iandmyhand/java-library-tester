@@ -1,4 +1,4 @@
-package study.hard.lambdaj;
+package study.hard.javalib.lambdaj;
 
 import static ch.lambdaj.Lambda.*;
 import static org.hamcrest.Matchers.*;
@@ -14,7 +14,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import study.hard.java.commons.User;
+import study.hard.javalib.commons.User;
 import ch.lambdaj.group.Group;
 
 import com.google.common.collect.Lists;

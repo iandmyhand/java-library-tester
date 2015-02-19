@@ -1,4 +1,4 @@
-package study.hard.equalsbuilder;
+package study.hard.javalib.equalsbuilder;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
-import study.hard.java.commons.User;
+import study.hard.javalib.commons.User;
 
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)

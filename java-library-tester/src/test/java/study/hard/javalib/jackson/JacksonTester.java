@@ -1,4 +1,4 @@
-package study.hard.jackson;
+package study.hard.javalib.jackson;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import study.hard.java.commons.User;
+import study.hard.javalib.commons.User;
 
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)
