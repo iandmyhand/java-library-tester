@@ -1,4 +1,4 @@
-package study.hard.equalsbuilder;
+package study.hard.java.equalsbuilder;
 
 import static org.junit.Assert.*;
 

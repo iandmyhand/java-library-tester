@@ -1,4 +1,4 @@
-package study.hard.lambdaj;
+package study.hard.java.lambdaj;
 
 import static ch.lambdaj.Lambda.*;
 import static org.hamcrest.Matchers.*;

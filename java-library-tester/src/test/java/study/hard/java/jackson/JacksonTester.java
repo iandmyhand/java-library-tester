@@ -1,4 +1,4 @@
-package study.hard.jackson;
+package study.hard.java.jackson;
 
 import java.io.File;
 import java.io.IOException;
