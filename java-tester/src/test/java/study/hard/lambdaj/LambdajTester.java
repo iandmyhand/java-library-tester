@@ -14,7 +14,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import study.hard.commons.User;
+import study.hard.java.commons.User;
 import ch.lambdaj.group.Group;
 
 import com.google.common.collect.Lists;

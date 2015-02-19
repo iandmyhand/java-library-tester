@@ -11,7 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import study.hard.commons.User;
+import study.hard.java.commons.User;
 
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)
