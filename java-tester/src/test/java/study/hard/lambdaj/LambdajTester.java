@@ -98,10 +98,10 @@ public class LambdajTester {
 						equalTo(name)),
 					having(
 						on(User.class).getRegistYmdt(),
-						allOf(
+						org.hamcrest.core.AllOf.allOf(
 							greaterThanOrEqualTo(DateUtils.addHours(now, -1)),
 							lessThanOrEqualTo(DateUtils.addHours(now, 1))
-						)
+							)
 					)
 				)
 			);
