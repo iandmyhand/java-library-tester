@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -132,11 +133,60 @@ public class LambdajTester {
 	}
 
 	@Test
+	public void testGroupingUseObjectAsKey() {
+		Group<User> groupMessageOfUser = group
+			(
+				userList,
+				by(on(User.class).getMessages())
+			);
+		Set<String> groupMessageKeys = groupMessageOfUser.keySet();
+		println("group keys:", groupMessageKeys);
+		assertTrue(1 == groupMessageKeys.size());
+
+		for (String messageKey : groupMessageKeys) {
+			println("message key:", messageKey);
+			println("size of group by message key[" + messageKey + "]:", groupMessageOfUser.find(messageKey).size());
+			for (User user : groupMessageOfUser.find(messageKey)) {
+				println("user:", user);
+			}
+		}
+	}
+
+	@Test
 	public void testSelectDistinct() {
 		List<User> distinctedUserList = new ArrayList<User>(new HashSet<User>(userList));
 		println("distinctedUserList: ", distinctedUserList);
 
 		assertTrue(6 == distinctedUserList.size());
+	}
+
+	@Test
+	public void testIsIn() {
+		List<User> selectedUserList =
+			select(
+				userList,
+				having(
+					on(User.class).getAge(),
+					isIn(Arrays.asList(18, 19, 20))
+				)
+			);
+		println("selectedUserList", selectedUserList);
+		assertTrue(3 == selectedUserList.size());
+
+		List<User> tmpUserList = Lists.newArrayList();
+		tmpUserList.add(new User("Tester1", 20, now));
+		tmpUserList.add(new User("Tester1", 21, now));
+
+		selectedUserList =
+			select(
+				userList,
+				having(
+					on(User.class),
+					isIn(tmpUserList)
+				)
+			);
+		println("selectedUserList", selectedUserList);
+		assertTrue(2 == selectedUserList.size());
 	}
 
 	private void println(String title, Object object) {
