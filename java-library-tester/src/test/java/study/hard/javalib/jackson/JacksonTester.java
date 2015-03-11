@@ -97,7 +97,7 @@ public class JacksonTester {
 	}
 
 	@Test
-	public void testDeserializeArrayOfObjectsWithInnerClass() {
+	public void testDeserializeArrayOfObjectsWithNonStaticMemberClass() {
 		UserHasInnerClass user = new UserHasInnerClass(USER_NAME, USER_AGE);
 		user.setDetailInfo(user.new DetailInfo(170F, 80F));
 		try {
