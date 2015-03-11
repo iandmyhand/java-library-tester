@@ -1,5 +1,7 @@
 package study.hard.javalib.jackson;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -14,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import study.hard.javalib.commons.User;
+import study.hard.javalib.commons.UserHasInnerClass;
 
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)
@@ -24,11 +27,14 @@ public class JacksonTester {
 	private static final String USER_NAME = "tester";
 	private static final Integer USER_AGE = 20;
 
+	ObjectMapper mapper;
 	private File file;
 	private User user;
 
 	@Before
 	public void setUp() {
+		mapper = new ObjectMapper();
+
 		file = new File(PATHNAME);
 		System.out.println("Absolute path: " + file.getAbsoluteFile() + "\n");
 
@@ -37,7 +43,6 @@ public class JacksonTester {
 
 	@Test
 	public void testBasicUsageOfJackson() {
-		ObjectMapper mapper = new ObjectMapper();
 		try {
 			//1. Convert Java object to JSON format
 			mapper.writeValue(file, user);
@@ -63,7 +68,6 @@ public class JacksonTester {
 
 	@Test
 	public void testDeserialiseArrayOfObjects() {
-		ObjectMapper mapper = new ObjectMapper();
 		try {
 			mapper.writeValue(file, user);
 			JsonNode jsonNode = mapper.readValue(file, JsonNode.class);
@@ -86,6 +90,27 @@ public class JacksonTester {
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Test
+	public void testDeserializeArrayOfObjectsWithInnerClass() {
+		UserHasInnerClass user = new UserHasInnerClass(USER_NAME, USER_AGE);
+		user.setDetailInfo(user.new DetailInfo(170F, 80F));
+		try {
+			mapper.writeValue(file, user);
+			JsonNode jsonNode = mapper.readValue(file, JsonNode.class);
+
+			UserHasInnerClass deserializedUser = mapper.readValue(jsonNode, UserHasInnerClass.class);
+			System.out.println("deserializedUser: " + deserializedUser + "\n");
+
+		} catch (JsonGenerationException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			assertEquals(JsonMappingException.class, e.getClass());
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
