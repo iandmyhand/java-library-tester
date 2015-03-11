@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)
  */
-public class User extends BasisObject {
+public class UserHasInnerClass extends BasisObject {
 	private static final long serialVersionUID = 7306465203093336101L;
 
 	private String name;
@@ -21,17 +21,42 @@ public class User extends BasisObject {
 		}
 	};
 	private Date registYmdt;
+	private DetailInfo detailInfo;
 
-	public User() {
+	public class DetailInfo extends BasisObject {
+		private static final long serialVersionUID = -6313923221333376567L;
+
+		private Float height;
+		private Float weight;
+
+		public Float getHeight() {
+			return height;
+		}
+
+		public void setHeight(Float height) {
+			this.height = height;
+		}
+
+		public Float getWeight() {
+			return weight;
+		}
+
+		public void setWeight(Float weight) {
+			this.weight = weight;
+		}
+
 	}
 
-	public User(String name, Integer age) {
+	public UserHasInnerClass() {
+	}
+
+	public UserHasInnerClass(String name, Integer age) {
 		super();
 		this.name = name;
 		this.age = age;
 	}
 
-	public User(String name, Integer age, Date registYmdt) {
+	public UserHasInnerClass(String name, Integer age, Date registYmdt) {
 		this(name, age);
 		this.registYmdt = registYmdt;
 	}
@@ -66,6 +91,14 @@ public class User extends BasisObject {
 
 	public void setRegistYmdt(Date registYmdt) {
 		this.registYmdt = registYmdt;
+	}
+
+	public DetailInfo getDetailInfo() {
+		return detailInfo;
+	}
+
+	public void setDetailInfo(DetailInfo detailInfo) {
+		this.detailInfo = detailInfo;
 	}
 
 }

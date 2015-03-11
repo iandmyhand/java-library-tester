@@ -13,21 +13,24 @@
 
 		<commons.lang.version>2.6</commons.lang.version>
 
-		<!-- Test Util -->
+		<!-- Test Util versions-->
 		<mockito.version>1.9.0</mockito.version>
 		<junit.version>4.11</junit.version>
 
-		<!-- Collections Util -->
+		<!-- Collections Util versions -->
 		<lambdaj.version>2.4</lambdaj.version>
 		<guava.version>17.0</guava.version>
 		<cglib.version>2.2.2</cglib.version>
 
-		<!-- Json Util -->
+		<!-- Json Util versions -->
 		<jackson.mapper.asl.version>1.8.5</jackson.mapper.asl.version>
 
-		<!-- Logging Util -->
+		<!-- Logging Util versions -->
 		<slf4j.version>1.6.6</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
+		
+		<!-- Encrypt & Decrypt Properties versions -->
+		<jasypt.version>1.9.2</jasypt.version>
 	</properties>
 
 	<repositories>
@@ -135,6 +138,13 @@
 					<artifactId>jmxri</artifactId>
 				</exclusion>
 			</exclusions>
+		</dependency>
+		
+		<!-- Encrypt & Decrypt Properties versions -->
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt-spring31</artifactId>
+			<version>${jasypt.version}</version>
 		</dependency>
 
 	</dependencies>
