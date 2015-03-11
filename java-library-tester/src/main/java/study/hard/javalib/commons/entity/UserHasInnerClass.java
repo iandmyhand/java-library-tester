@@ -1,4 +1,4 @@
-package study.hard.javalib.commons;
+package study.hard.javalib.commons.entity;
 
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)

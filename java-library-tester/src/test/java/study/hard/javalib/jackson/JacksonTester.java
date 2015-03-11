@@ -15,8 +15,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import study.hard.javalib.commons.User;
-import study.hard.javalib.commons.UserHasInnerClass;
+import study.hard.javalib.commons.entity.User;
+import study.hard.javalib.commons.entity.UserHasInnerClass;
 
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)

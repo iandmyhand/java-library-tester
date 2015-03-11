@@ -1,4 +1,4 @@
-package study.hard.javalib.commons;
+package study.hard.javalib.commons.entity;
 
 import java.util.ArrayList;
 import java.util.Date;

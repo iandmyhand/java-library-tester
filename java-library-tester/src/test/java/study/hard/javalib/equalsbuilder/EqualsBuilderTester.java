@@ -6,7 +6,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.junit.Before;
 import org.junit.Test;
 
-import study.hard.javalib.commons.User;
+import study.hard.javalib.commons.entity.User;
 
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)
