@@ -40,7 +40,7 @@ public class LambdajTester {
 		// Add the 10 users.
 		for (int i = 1; i <= 10; i++) {
 			Date registDay = DateUtils.addDays(now, -(i % 3));
-			User user = new User("Tester" + (i % 2), 20 + (i % 3), DateUtils.addHours(registDay, -(i % 2)));
+			User user = new User("Tester" + (i % 2), 20 + (i % 3), DateUtils.addHours(registDay, -(i % 4)));
 			userList.add(user);
 		}
 
