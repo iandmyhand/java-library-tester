@@ -19,6 +19,7 @@ import org.junit.Test;
 
 import study.hard.javalib.commons.entity.User;
 import study.hard.javalib.commons.entity.UserHasComplexKey;
+import study.hard.javalib.commons.enumeration.SortType;
 import ch.lambdaj.function.compare.ArgumentComparator;
 import ch.lambdaj.group.Group;
 
@@ -38,7 +39,8 @@ public class LambdajTester {
 
 		// Add the 10 users.
 		for (int i = 1; i <= 10; i++) {
-			User user = new User("Tester" + (i % 2), 20 + (i % 3), DateUtils.addDays(now, -(i % 3)));
+			Date registDay = DateUtils.addDays(now, -(i % 3));
+			User user = new User("Tester" + (i % 2), 20 + (i % 3), DateUtils.addHours(registDay, -(i % 2)));
 			userList.add(user);
 		}
 
@@ -68,6 +70,12 @@ public class LambdajTester {
 	public void testSorting() {
 		Comparator<User> orderByAge = new ArgumentComparator<User, Integer>(on(User.class).getAge());
 		List<User> sortedList = sort(userList, on(User.class), orderByAge);
+		println("Test sorting:", sortedList);
+	}
+
+	@Test
+	public void testSortingByDescending() {
+		List<User> sortedList = sort(userList, on(User.class).getAge(), SortType.DESCENDING.getOrdering());
 		println("Test sorting:", sortedList);
 	}
 
