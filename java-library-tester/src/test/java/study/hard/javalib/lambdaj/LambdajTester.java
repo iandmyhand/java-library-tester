@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import study.hard.javalib.commons.entity.User;
+import study.hard.javalib.commons.entity.UserHasComplexKey;
 import ch.lambdaj.group.Group;
 
 import com.google.common.collect.Lists;
@@ -150,6 +151,39 @@ public class LambdajTester {
 				println("user:", user);
 			}
 		}
+	}
+
+	@Test
+	public void testGroupingUseComplexKey() {
+		List<UserHasComplexKey> userHasComplexKeyList = createUserHasComplexKeyList();
+		Group<UserHasComplexKey> groupOfUser = group
+			(
+				userHasComplexKeyList,
+				by(on(UserHasComplexKey.class).getComplexKey())
+			);
+
+		Set<String> groupOfUserKeys = groupOfUser.keySet();
+		for (String userComplexKey : groupOfUserKeys) {
+			println("userComplex key:", userComplexKey);
+			println("size of group by user Complex key[" + userComplexKey + "]:", groupOfUser.find(userComplexKey).size());
+			for (UserHasComplexKey user : groupOfUser.find(userComplexKey)) {
+				println("user:", user);
+			}
+		}
+	}
+
+	private List<UserHasComplexKey> createUserHasComplexKeyList() {
+		List<UserHasComplexKey> userHasComplexKeyList = Lists.newArrayList();
+
+		// Add the 10 users.
+		for (int i = 1; i <= 10; i++) {
+			UserHasComplexKey user = new UserHasComplexKey("Tester" + (i % 2), 20 + (i % 3), DateUtils.addDays(now, -(i % 3)));
+			userHasComplexKeyList.add(user);
+		}
+		println("Sample list:", userHasComplexKeyList);
+		assertTrue(10 == userHasComplexKeyList.size());
+
+		return userHasComplexKeyList;
 	}
 
 	@Test
