@@ -6,17 +6,20 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.collections.ComparatorUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
 import study.hard.javalib.commons.entity.User;
 import study.hard.javalib.commons.entity.UserHasComplexKey;
+import ch.lambdaj.function.compare.ArgumentComparator;
 import ch.lambdaj.group.Group;
 
 import com.google.common.collect.Lists;
@@ -59,6 +62,23 @@ public class LambdajTester {
 		println("test to select with one condition:", selectedList);
 
 		assertTrue(5 == selectedList.size());
+	}
+
+	@Test
+	public void testSorting() {
+		Comparator<User> orderByAge = new ArgumentComparator<User, Integer>(on(User.class).getAge());
+		List<User> sortedList = sort(userList, on(User.class), orderByAge);
+		println("Test sorting:", sortedList);
+	}
+
+	@Test
+	public void testSortingByMultipleColumn() {
+		Comparator<User> byAge = new ArgumentComparator<User, Integer>(on(User.class).getAge());
+		Comparator<User> byRegistYmdt = new ArgumentComparator<User, Date>(on(User.class).getRegistYmdt());
+		@SuppressWarnings("unchecked") Comparator<User> orderBy = ComparatorUtils.chainedComparator(byAge, byRegistYmdt);
+
+		List<User> sortedList = sort(userList, on(User.class), orderBy);
+		println("Test sorting:", sortedList);
 	}
 
 	@Test

@@ -21,6 +21,7 @@
 		<lambdaj.version>2.4</lambdaj.version>
 		<guava.version>17.0</guava.version>
 		<cglib.version>2.2.2</cglib.version>
+		<commons-collections.version>3.2.1</commons-collections.version>
 
 		<!-- Json Util versions -->
 		<jackson.mapper.asl.version>1.8.5</jackson.mapper.asl.version>
@@ -96,6 +97,11 @@
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
 			<version>${cglib.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>${commons-collections.version}</version>
 		</dependency>
 
 		<!-- Logging Util -->
