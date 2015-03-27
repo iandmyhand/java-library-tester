@@ -21,7 +21,7 @@ import study.hard.javalib.commons.entity.UserHasInnerClass;
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)
  */
-public class JacksonTester {
+public class JacksonTest {
 
 	private static final String PATHNAME = "user.json";
 	private static final String USER_NAME = "tester";

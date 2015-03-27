@@ -28,7 +28,7 @@ import com.google.common.collect.Lists;
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)
  */
-public class LambdajTester {
+public class LambdajTest {
 
 	private List<User> userList;
 	private Date now = new Date();

@@ -11,7 +11,7 @@ import study.hard.javalib.commons.entity.User;
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)
  */
-public class EqualsBuilderTester {
+public class EqualsBuilderTest {
 
 	private class UserOverrideEquals extends User {
 		private static final long serialVersionUID = 3964053505870438947L;
