@@ -67,6 +67,23 @@ public class LambdajTest {
 	}
 
 	@Test
+	public void testSelectWithNull() {
+		userList.get(0).setName(null);
+		List<User> selectedList = select
+			(
+				userList,
+				having(
+					on(User.class).getName(),
+					nullValue()
+				)
+			);
+
+		println("test to select with one condition:", selectedList);
+
+		assertTrue(1 == selectedList.size());
+	}
+
+	@Test
 	public void testSorting() {
 		Comparator<User> orderByAge = new ArgumentComparator<User, Integer>(on(User.class).getAge());
 		List<User> sortedList = sort(userList, on(User.class), orderByAge);
