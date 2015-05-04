@@ -295,6 +295,12 @@ public class LambdajTest {
 		assertEquals(2, selectedUserList.size());
 	}
 
+	@Test
+	public void testExtract() {
+		List<String> nameList = extract(userList, on(User.class).getName());
+		println("nameList", nameList);
+	}
+
 	private void println(String title, Object object) {
 		System.out.println("==================================================");
 		System.out.println(title);
