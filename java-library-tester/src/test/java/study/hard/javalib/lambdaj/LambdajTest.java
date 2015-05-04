@@ -108,6 +108,20 @@ public class LambdajTest {
 	}
 
 	@Test
+	public void testSelectFirst() {
+		User selectedUser = selectFirst(userList, having(on(User.class).getName(), equalTo("Tester1")));
+		println("select first", selectedUser);
+		assertNotNull(selectedUser);
+	}
+
+	@Test(expected = NullPointerException.class)
+	public void testSelectFirstWhenIfNotExist() {
+		User selectedUser = selectFirst(userList, having(on(User.class).getName(), equalTo("Tester")));
+		println("select first", selectedUser.getAge());
+		assertNull(selectedUser);
+	}
+
+	@Test
 	public void testSorting() {
 		Comparator<User> orderByAge = new ArgumentComparator<User, Integer>(on(User.class).getAge());
 		List<User> sortedList = sort(userList, on(User.class), orderByAge);
