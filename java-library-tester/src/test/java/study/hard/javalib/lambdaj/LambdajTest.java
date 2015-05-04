@@ -46,7 +46,7 @@ public class LambdajTest {
 
 		println("Sample list:", userList);
 
-		assertTrue(10 == userList.size());
+		assertEquals(10, userList.size());
 	}
 
 	@Test
@@ -63,7 +63,31 @@ public class LambdajTest {
 
 		println("test to select with one condition:", selectedList);
 
-		assertTrue(5 == selectedList.size());
+		assertEquals(5, selectedList.size());
+	}
+
+	@Test
+	public void testSelectWithTwoCondition() {
+		String name = "Tester1";
+		Integer age = 21;
+		List<User> selectedList = select
+			(
+				userList,
+				allOf(
+					having(
+						on(User.class).getName(),
+						equalTo(name)
+					),
+					having(
+						on(User.class).getAge(),
+						equalTo(age)
+					)
+				)
+			);
+
+		println("test to select with two condition:", selectedList);
+
+		assertEquals(2, selectedList.size());
 	}
 
 	@Test
@@ -80,7 +104,7 @@ public class LambdajTest {
 
 		println("test to select with one condition:", selectedList);
 
-		assertTrue(1 == selectedList.size());
+		assertEquals(1, selectedList.size());
 	}
 
 	@Test
@@ -128,7 +152,7 @@ public class LambdajTest {
 
 		println("Test ordering comparison:", selectedList);
 
-		assertTrue(3 == selectedList.size());
+		assertEquals(3, selectedList.size());
 	}
 
 	@Test
@@ -155,7 +179,7 @@ public class LambdajTest {
 
 		println("Test ordering comparison:", selectedList);
 
-		assertTrue(2 == selectedList.size());
+		assertEquals(2, selectedList.size());
 	}
 
 	@Test
@@ -167,7 +191,7 @@ public class LambdajTest {
 			);
 		Set<String> groupAgeKeys = groupAgeOfUser.keySet();
 		println("group keys:", groupAgeKeys);
-		assertTrue(3 == groupAgeKeys.size());
+		assertEquals(3, groupAgeKeys.size());
 
 		for (String ageKey : groupAgeKeys) {
 			println("age key:", ageKey);
@@ -187,7 +211,7 @@ public class LambdajTest {
 			);
 		Set<String> groupMessageKeys = groupMessageOfUser.keySet();
 		println("group keys:", groupMessageKeys);
-		assertTrue(1 == groupMessageKeys.size());
+		assertEquals(1, groupMessageKeys.size());
 
 		for (String messageKey : groupMessageKeys) {
 			println("message key:", messageKey);
@@ -226,7 +250,7 @@ public class LambdajTest {
 			userHasComplexKeyList.add(user);
 		}
 		println("Sample list:", userHasComplexKeyList);
-		assertTrue(10 == userHasComplexKeyList.size());
+		assertEquals(10, userHasComplexKeyList.size());
 
 		return userHasComplexKeyList;
 	}
@@ -236,12 +260,13 @@ public class LambdajTest {
 		List<User> distinctedUserList = new ArrayList<User>(new HashSet<User>(userList));
 		println("distinctedUserList: ", distinctedUserList);
 
-		assertTrue(6 == distinctedUserList.size());
+		assertEquals(6, distinctedUserList.size());
 	}
 
 	@Test
 	public void testIsIn() {
-		List<User> selectedUserList =
+		List<User> selectedUserList = null;
+		selectedUserList =
 			select(
 				userList,
 				having(
@@ -250,12 +275,14 @@ public class LambdajTest {
 				)
 			);
 		println("selectedUserList", selectedUserList);
-		assertTrue(3 == selectedUserList.size());
+		assertEquals(3, selectedUserList.size());
 
 		List<User> tmpUserList = Lists.newArrayList();
-		tmpUserList.add(new User("Tester1", 20, now));
-		tmpUserList.add(new User("Tester1", 21, now));
+		tmpUserList.add(selectedUserList.get(0));
+		tmpUserList.add(selectedUserList.get(1));
+		println("tmpUserList", tmpUserList);
 
+		selectedUserList = null;
 		selectedUserList =
 			select(
 				userList,
@@ -265,7 +292,7 @@ public class LambdajTest {
 				)
 			);
 		println("selectedUserList", selectedUserList);
-		assertTrue(2 == selectedUserList.size());
+		assertEquals(2, selectedUserList.size());
 	}
 
 	private void println(String title, Object object) {
