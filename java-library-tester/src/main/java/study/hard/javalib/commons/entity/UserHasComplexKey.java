@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * A User has complex key.
- * @author han.seomgi@nhnent.com
+ * @author iandmyhand@gmail.com
  */
 public class UserHasComplexKey extends User {
 	private static final long serialVersionUID = -7672577740372275065L;
