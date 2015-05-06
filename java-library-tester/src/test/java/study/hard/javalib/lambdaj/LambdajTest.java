@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.collections.ComparatorUtils;
@@ -119,6 +120,12 @@ public class LambdajTest {
 		User selectedUser = selectFirst(userList, having(on(User.class).getName(), equalTo("Tester")));
 		println("select first", selectedUser.getAge());
 		assertNull(selectedUser);
+	}
+
+	@Test
+	public void testIndex() {
+		Map<String, User> usersMap = index(userList, on(User.class).getName());
+		println("usersMap", usersMap);
 	}
 
 	@Test
