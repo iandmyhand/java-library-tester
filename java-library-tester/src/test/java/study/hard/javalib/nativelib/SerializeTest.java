@@ -16,8 +16,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import study.hard.javalib.commons.entity.NonSerializableAddress;
-import study.hard.javalib.commons.entity.User;
+import study.hard.javalib.entity.NonSerializableAddress;
+import study.hard.javalib.entity.User;
 
 import com.google.common.collect.Lists;
 

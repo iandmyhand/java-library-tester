@@ -1,4 +1,4 @@
-package study.hard.javalib.nativelib;
+package study.hard.javalib.service;
 
 /**
  * A class to test Thread.

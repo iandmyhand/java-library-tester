@@ -1,4 +1,6 @@
-package study.hard.javalib.commons.entity;
+package study.hard.javalib.entity;
+
+import study.hard.javalib.commons.entity.BasisObject;
 
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)

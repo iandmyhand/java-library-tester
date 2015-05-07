@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import study.hard.javalib.service.RunnableTester;
+import study.hard.javalib.service.ThreadTester;
+
 public class ThreadTest {
 
 	@Test

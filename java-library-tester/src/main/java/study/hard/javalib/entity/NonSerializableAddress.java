@@ -1,4 +1,4 @@
-package study.hard.javalib.commons.entity;
+package study.hard.javalib.entity;
 
 /**
  * Address class for non-serialize test.

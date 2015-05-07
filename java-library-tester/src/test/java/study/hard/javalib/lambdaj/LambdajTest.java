@@ -18,9 +18,9 @@ import org.apache.commons.lang.time.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import study.hard.javalib.commons.entity.User;
-import study.hard.javalib.commons.entity.UserHasComplexKey;
 import study.hard.javalib.commons.enumeration.SortType;
+import study.hard.javalib.entity.User;
+import study.hard.javalib.entity.UserHasComplexKey;
 import ch.lambdaj.function.compare.ArgumentComparator;
 import ch.lambdaj.group.Group;
 

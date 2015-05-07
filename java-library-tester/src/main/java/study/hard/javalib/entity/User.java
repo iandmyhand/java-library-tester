@@ -1,8 +1,10 @@
-package study.hard.javalib.commons.entity;
+package study.hard.javalib.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import study.hard.javalib.commons.entity.BasisObject;
 
 /**
  * @author SeomGi, Han(iandmyhand@gmail.com)

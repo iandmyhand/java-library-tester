@@ -1,4 +1,4 @@
-package study.hard.javalib.commons.entity;
+package study.hard.javalib.entity;
 
 import java.util.Date;
 
