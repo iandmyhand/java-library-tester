@@ -11,7 +11,7 @@ public class User extends BasisObject {
 	private static final long serialVersionUID = 7306465203093336101L;
 
 	private String name;
-	private Integer age;
+	private transient Integer age;
 	private List<String> messages = new ArrayList<String>() {
 		private static final long serialVersionUID = -5619483093529013560L;
 		{
@@ -21,6 +21,7 @@ public class User extends BasisObject {
 		}
 	};
 	private Date registYmdt;
+	private NonSerializableAddress address;
 
 	public User() {
 	}
@@ -66,6 +67,14 @@ public class User extends BasisObject {
 
 	public void setRegistYmdt(Date registYmdt) {
 		this.registYmdt = registYmdt;
+	}
+
+	public NonSerializableAddress getAddress() {
+		return address;
+	}
+
+	public void setAddress(NonSerializableAddress address) {
+		this.address = address;
 	}
 
 }

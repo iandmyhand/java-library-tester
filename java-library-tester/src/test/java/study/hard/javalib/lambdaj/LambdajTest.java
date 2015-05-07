@@ -37,9 +37,10 @@ public class LambdajTest {
 	@Before
 	public void setUp() {
 		userList = Lists.newArrayList();
+		int userCount = 10;
 
 		// Add the 10 users.
-		for (int i = 1; i <= 10; i++) {
+		for (int i = 1; i <= userCount; i++) {
 			Date registDay = DateUtils.addDays(now, -(i % 3));
 			User user = new User("Tester" + (i % 2), 20 + (i % 3), DateUtils.addHours(registDay, -(i % 4)));
 			userList.add(user);
@@ -47,7 +48,7 @@ public class LambdajTest {
 
 		println("Sample list:", userList);
 
-		assertEquals(10, userList.size());
+		assertEquals(userCount, userList.size());
 	}
 
 	@Test
