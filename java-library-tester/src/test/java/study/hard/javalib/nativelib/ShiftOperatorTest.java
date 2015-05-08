@@ -10,30 +10,41 @@ import org.junit.Test;
  */
 public class ShiftOperatorTest {
 
+	int i = 0;
+
+	public void setUpTo2() {
+		i = 2;
+	}
+
+	public void setUpTo8() {
+		i = 8;
+	}
+
 	@Test
-	public void testShiftOperator() {
-		int i = 0;
+	public void testLeftShiftOperator() {
+		System.out.println("Test left shift operator.");
 
-		i = 2;
-		System.out.print("i: " + i);
-		System.out.println(" [" + getBit(i) + "]");
-
-		i = 2;
+		setUpTo2();
+		System.out.print(i + " << 1 = ");
 		i = i << 1;
-		System.out.print("i: " + i);
-		System.out.println(" [" + getBit(i) + "]");
+		System.out.println(i + " [" + getBit(i) + "]");
 		assertEquals(4, i);
 
-		i = 2;
+		setUpTo2();
+		System.out.print(i + " << 2 = ");
 		i = i << 2;
-		System.out.print("i: " + i);
-		System.out.println(" [" + getBit(i) + "]");
+		System.out.println(i + " [" + getBit(i) + "]");
 		assertEquals(8, i);
+	}
 
-		i = 8;
+	@Test
+	public void testRightShiftOperator() {
+		System.out.println("Test right shift operator.");
+
+		setUpTo8();
+		System.out.print(i + " >> 2 = ");
 		i = i >> 2;
-		System.out.print("i: " + i);
-		System.out.println(" [" + getBit(i) + "]");
+		System.out.println(i + " [" + getBit(i) + "]");
 		assertEquals(2, i);
 	}
 
