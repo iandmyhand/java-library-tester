@@ -376,7 +376,7 @@ public class LambdajTest {
 
 		println("sum of ages: ", sum);
 		assertEquals(new Integer(210), sum);
-		assertEquals(10, userList.size());
+		assertEquals(5, userList.size()); // LambdaCollections uses 'call by reference', if do not use clone() method.
 	}
 
 	private void println(String title, Object object) {
