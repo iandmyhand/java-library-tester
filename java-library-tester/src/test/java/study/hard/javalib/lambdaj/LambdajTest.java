@@ -21,6 +21,7 @@ import org.junit.Test;
 import study.hard.javalib.commons.enumeration.SortType;
 import study.hard.javalib.entity.User;
 import study.hard.javalib.entity.UserHasComplexKey;
+import ch.lambdaj.collection.LambdaCollections;
 import ch.lambdaj.function.compare.ArgumentComparator;
 import ch.lambdaj.group.Group;
 
@@ -321,6 +322,61 @@ public class LambdajTest {
 	public void testExtract() {
 		List<String> nameList = extract(userList, on(User.class).getName());
 		println("nameList", nameList);
+	}
+
+	@Test
+	public void testSumWithLambdaCollections() {
+		Integer sum = 0;
+
+		println("size: ", userList.size());
+		String name = "Tester1";
+
+		sum = LambdaCollections.with(userList)
+			.clone()
+			.retain(having(on(User.class).getName(), equalTo(name)))
+			.sum(on(User.class).getAge());
+
+		println("sum of ages: ", sum);
+		assertEquals(new Integer(104), sum);
+		assertEquals(10, userList.size());
+
+		println("size: ", userList.size());
+		List<String> names = Lists.newArrayList("Tester0", "Tester1");
+		sum = LambdaCollections.with(userList)
+			.clone()
+			.retain(having(on(User.class).getName(), isIn(names)))
+			.sum(on(User.class).getAge());
+
+		println("sum of ages: ", sum);
+		assertEquals(new Integer(210), sum);
+		assertEquals(10, userList.size());
+	}
+
+	@Test
+	public void testSumWithLambdaCollectionsWithoutClone() {
+		Integer sum = 0;
+
+		println("size: ", userList.size());
+		String name = "Tester1";
+
+		sum = LambdaCollections.with(userList)
+			.retain(having(on(User.class).getName(), equalTo(name)))
+			.sum(on(User.class).getAge());
+
+		println("sum of ages: ", sum);
+		assertEquals(new Integer(104), sum);
+		assertEquals(10, userList.size());
+
+		println("size: ", userList.size());
+		List<String> names = Lists.newArrayList("Tester0", "Tester1");
+
+		sum = LambdaCollections.with(userList)
+			.retain(having(on(User.class).getName(), isIn(names)))
+			.sum(on(User.class).getAge());
+
+		println("sum of ages: ", sum);
+		assertEquals(new Integer(210), sum);
+		assertEquals(10, userList.size());
 	}
 
 	private void println(String title, Object object) {
