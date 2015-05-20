@@ -3,14 +3,19 @@ The test codes for variety open source Java libraries.
 
 ## Tested libraries
 
-#### EqualsBuilder
+### Calendar and Date
+- Reference: 
+  - Calendar: https://docs.oracle.com/javase/7/docs/api/java/util/Calendar.html
+  - Date: https://docs.oracle.com/javase/7/docs/api/java/util/Date.html
+
+### EqualsBuilder
 - Reference: http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html
 
-#### Jackson
+### Jackson
 - Reference: http://jackson.codehaus.org/
 
-#### Lambdaj
+### Lambdaj
 - Reference: https://code.google.com/p/lambdaj/
 
-#### slf4j
+### slf4j
 - Reference: http://www.slf4j.org/
