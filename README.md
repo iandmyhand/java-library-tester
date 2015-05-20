@@ -14,6 +14,9 @@ The test codes for variety open source Java libraries.
 ### Jackson
 - Reference: http://jackson.codehaus.org/
 
+### JodaTime
+- Reference: http://www.joda.org/joda-time/
+
 ### Lambdaj
 - Reference: https://code.google.com/p/lambdaj/
 
