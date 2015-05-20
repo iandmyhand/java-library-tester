@@ -22,6 +22,7 @@ import study.hard.javalib.commons.enumeration.SortType;
 import study.hard.javalib.entity.User;
 import study.hard.javalib.entity.UserHasComplexKey;
 import ch.lambdaj.collection.LambdaCollections;
+import ch.lambdaj.collection.LambdaGroup;
 import ch.lambdaj.function.compare.ArgumentComparator;
 import ch.lambdaj.group.Group;
 
@@ -276,6 +277,24 @@ public class LambdajTest {
 		assertEquals(10, userHasComplexKeyList.size());
 
 		return userHasComplexKeyList;
+	}
+
+	@Test
+	public void testGroupingUsingLambdaCollections() {
+		Integer sum = 0;
+		List<String> names = Lists.newArrayList("Tester0", "Tester1");
+		LambdaGroup<User> ageOfUserGroup = LambdaCollections.with(userList)
+			.clone()
+			.group(by(on(User.class).getAge()));
+
+		Set<String> ageKeys = ageOfUserGroup.keySet();
+		for (String ageKey : ageKeys) {
+			sum = LambdaCollections.with(ageOfUserGroup.find(ageKey))
+				.clone()
+				.retain(having(on(User.class).getName(), isIn(names)))
+				.sum(on(User.class).getAge());
+			println("sum of age " + ageKey + ": ", sum);
+		}
 	}
 
 	@Test
