@@ -32,6 +32,9 @@
 		
 		<!-- Encrypt & Decrypt Properties versions -->
 		<jasypt.version>1.9.2</jasypt.version>
+		
+		<!-- Date Util -->
+		<joda-time.version>2.7</joda-time.version>
 	</properties>
 
 	<repositories>
@@ -151,6 +154,13 @@
 			<groupId>org.jasypt</groupId>
 			<artifactId>jasypt-spring31</artifactId>
 			<version>${jasypt.version}</version>
+		</dependency>
+		
+		<!-- Date Util -->
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>${joda-time.version}</version>
 		</dependency>
 
 	</dependencies>
