@@ -95,6 +95,27 @@ public class LambdajTest {
 	}
 
 	@Test
+	public void testSelectWithTwoCondition2() {
+		Date condition = userList.get(0).getRegistYmdt();
+		System.out.println(condition);
+		List<User> selectedList = select
+			(
+				userList,
+				having(
+					on(User.class).getRegistYmdt(),
+					allOf(
+						greaterThanOrEqualTo(DateUtils.addHours(condition, -2)),
+						lessThanOrEqualTo(condition)
+					)
+				)
+			);
+
+		println("test to select with two condition:", selectedList);
+
+		assertEquals(3, selectedList.size());
+	}
+
+	@Test
 	public void testSelectWithNull() {
 		userList.get(0).setName(null);
 		List<User> selectedList = select
@@ -302,7 +323,7 @@ public class LambdajTest {
 		List<User> distinctedUserList = new ArrayList<User>(new HashSet<User>(userList));
 		println("distinctedUserList: ", distinctedUserList);
 
-		assertEquals(6, distinctedUserList.size());
+		assertEquals(10, distinctedUserList.size());
 	}
 
 	@Test
@@ -384,7 +405,7 @@ public class LambdajTest {
 
 		println("sum of ages: ", sum);
 		assertEquals(new Integer(104), sum);
-		assertEquals(10, userList.size());
+		assertEquals(5, userList.size());
 
 		println("size: ", userList.size());
 		List<String> names = Lists.newArrayList("Tester0", "Tester1");
