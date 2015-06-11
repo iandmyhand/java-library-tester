@@ -68,6 +68,7 @@ public class LambdajTest {
 		println("test to select with one condition:", selectedList);
 
 		assertEquals(5, selectedList.size());
+		assertEquals(10, userList.size());
 	}
 
 	@Test
