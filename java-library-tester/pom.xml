@@ -39,6 +39,9 @@
 		
 		<!-- Date Util -->
 		<joda-time.version>2.7</joda-time.version>
+		
+		<!-- Excel -->
+		<poi.version>3.12</poi.version>
 	</properties>
 
 	<repositories>
@@ -178,6 +181,19 @@
 			<artifactId>joda-time</artifactId>
 			<version>${joda-time.version}</version>
 		</dependency>
+		
+		<!-- Excel -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${poi.version}</version>
+		</dependency>
+				
 
 	</dependencies>
 
