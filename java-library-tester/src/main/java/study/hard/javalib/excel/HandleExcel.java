@@ -54,7 +54,7 @@ public class HandleExcel {
 			fileOutputStream.close();
 			workbook.close();
 			//			testExcelFile.delete();
-			System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
+			System.out.println(file.getPath() + " written successfully on disk.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
