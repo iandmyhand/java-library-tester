@@ -25,6 +25,10 @@ public class WriteExcelTest {
 		handleExcel.writeExcel(tempFile);
 		System.out.println("\n##### Read excel test.");
 		handleExcel.readExcel(tempFile);
+		System.out.println("\n##### Update excel test.");
+		handleExcel.updateExcel(tempFile);
+		System.out.println("\n##### Read excel test.");
+		handleExcel.readExcel(tempFile);
 	}
 
 	@After

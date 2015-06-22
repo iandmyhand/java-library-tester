@@ -33,8 +33,7 @@ public class HandleExcel {
 		//Iterate over data and write to sheet
 		Set<String> keyset = data.keySet();
 		int rownum = 0;
-		for (String key : keyset)
-		{
+		for (String key : keyset) {
 			Row row = sheet.createRow(rownum++);
 			Object[] objArr = data.get(key);
 			int cellnum = 0;
@@ -61,8 +60,7 @@ public class HandleExcel {
 	}
 
 	public void readExcel(File file) {
-		try
-		{
+		try {
 			FileInputStream fileInputStream = new FileInputStream(file);
 
 			//Create Workbook instance holding reference to .xlsx file
@@ -97,8 +95,43 @@ public class HandleExcel {
 			}
 			fileInputStream.close();
 			workbook.close();
-		} catch (Exception e)
-		{
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void updateExcel(File file) {
+		try {
+			FileInputStream fileInputStream = new FileInputStream(file);
+
+			//Create Workbook instance holding reference to .xlsx file
+			XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
+
+			//Get first/desired sheet from the workbook
+			XSSFSheet sheet = workbook.getSheetAt(0);
+
+			//Iterate through each rows one by one
+			Iterator<Row> rowIterator = sheet.iterator();
+			while (rowIterator.hasNext())
+			{
+				Row row = rowIterator.next();
+				Cell cell = row.getCell(0);
+				if (Cell.CELL_TYPE_NUMERIC == cell.getCellType()) {
+					Double cellValue = cell.getNumericCellValue();
+					cell.setCellValue(cellValue * 2d);
+				}
+				cell = row.getCell(1);
+				if (Cell.CELL_TYPE_STRING == cell.getCellType()) {
+					String cellValue = cell.getStringCellValue();
+					cell.setCellValue("UPDATED: " + cellValue);
+				}
+			}
+			fileInputStream.close();
+			FileOutputStream fileOutputStream = new FileOutputStream(file);
+			workbook.write(fileOutputStream);
+			fileOutputStream.close();
+			workbook.close();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
