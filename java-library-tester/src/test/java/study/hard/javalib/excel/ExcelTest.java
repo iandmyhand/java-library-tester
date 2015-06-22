@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class WriteExcelTest {
+public class ExcelTest {
 
 	private HandleExcel handleExcel;
 	private File tempFile;
