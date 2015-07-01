@@ -41,7 +41,7 @@
 		<joda-time.version>2.7</joda-time.version>
 		
 		<!-- Excel -->
-		<poi.version>3.12</poi.version>
+		<poi.version>3.10-FINAL</poi.version>
 	</properties>
 
 	<repositories>

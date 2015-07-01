@@ -51,8 +51,6 @@ public class HandleExcel {
 			FileOutputStream fileOutputStream = new FileOutputStream(file);
 			workbook.write(fileOutputStream);
 			fileOutputStream.close();
-			workbook.close();
-			//			testExcelFile.delete();
 			System.out.println(file.getPath() + " written successfully on disk.");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -94,7 +92,6 @@ public class HandleExcel {
 				System.out.println("");
 			}
 			fileInputStream.close();
-			workbook.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -124,13 +121,13 @@ public class HandleExcel {
 				if (Cell.CELL_TYPE_STRING == cell.getCellType()) {
 					String cellValue = cell.getStringCellValue();
 					cell.setCellValue("UPDATED: " + cellValue);
+					System.out.println(cell.getStringCellValue());
 				}
 			}
 			fileInputStream.close();
 			FileOutputStream fileOutputStream = new FileOutputStream(file);
 			workbook.write(fileOutputStream);
 			fileOutputStream.close();
-			workbook.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

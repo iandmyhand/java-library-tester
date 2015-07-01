@@ -12,6 +12,7 @@ public class HandleFile {
 	File getTempFile(String filename) throws IOException {
 		File tempFile = null;
 		File tempDirectory = getTempDirectory();
+		System.out.println(tempDirectory.isDirectory());
 		tempFile = new File(tempDirectory, filename);
 		return tempFile;
 	}
@@ -19,8 +20,10 @@ public class HandleFile {
 	File getTempDirectory() throws IOException {
 		File tempDirectory = null;
 		tempDirectory = File.createTempFile("TEST_DIR_", "");
+		tempDirectory.delete();
 		if (!tempDirectory.exists()) {
-			tempDirectory.mkdir();
+			boolean result = tempDirectory.mkdir();
+			System.out.println("temp directory created: " + result);
 		}
 		return tempDirectory;
 	}
