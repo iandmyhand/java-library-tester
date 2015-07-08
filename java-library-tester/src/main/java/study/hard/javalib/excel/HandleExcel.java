@@ -3,6 +3,10 @@ package study.hard.javalib.excel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -12,8 +16,40 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import study.hard.javalib.exception.BaseException;
 
 public class HandleExcel {
+
+	private static final Logger logger = LoggerFactory.getLogger(HandleExcel.class);
+
+	private static final String EXCEL_FILE_EXTENSION = "xlsx";
+	private static final String TEMP_DIR_PREFIX = "TEMP_DIR_";
+	private static final String TEMP_EXCEL_FILENAME = "temp_excel_file";
+
+	public File createTemporaryExcelFile() throws IOException {
+		File directory = null;
+		try {
+			directory = File.createTempFile(TEMP_DIR_PREFIX, "");
+		} catch (IOException e) {
+			logger.error("Failed to create temporary directory.", e);
+			throw e;
+		}
+		if (directory == null) {
+			throw new BaseException("Failed to create temporary directory.");
+		}
+		directory.delete();
+		if (!directory.exists()) {
+			directory.mkdirs();
+		}
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+		String fileName = TEMP_EXCEL_FILENAME + "_" + dateFormat.format(new Date()) + "." + EXCEL_FILE_EXTENSION;
+
+		return new File(directory, fileName);
+	}
 
 	public void writeExcel(File file) {
 		//Blank workbook
@@ -46,20 +82,17 @@ public class HandleExcel {
 					cell.setCellValue((Integer)obj);
 			}
 		}
-		try {
+		try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
 			//Write the workbook in file system
-			FileOutputStream fileOutputStream = new FileOutputStream(file);
 			workbook.write(fileOutputStream);
-			fileOutputStream.close();
-			System.out.println(file.getPath() + " written successfully on disk.");
+			logger.debug("{} written successfully on disk.", file.getPath());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void readExcel(File file) {
-		try {
-			FileInputStream fileInputStream = new FileInputStream(file);
+		try (FileInputStream fileInputStream = new FileInputStream(file)) {
 
 			//Create Workbook instance holding reference to .xlsx file
 			XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
@@ -82,24 +115,22 @@ public class HandleExcel {
 					switch (cell.getCellType())
 					{
 						case Cell.CELL_TYPE_NUMERIC:
-							System.out.print(cell.getNumericCellValue() + "\t");
+							logger.debug("{}\t", cell.getNumericCellValue());
 							break;
 						case Cell.CELL_TYPE_STRING:
-							System.out.print(cell.getStringCellValue() + "\t");
+							logger.debug("{}\t", cell.getStringCellValue());
 							break;
 					}
 				}
-				System.out.println("");
+				logger.debug("");
 			}
-			fileInputStream.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public void updateExcel(File file) {
-		try {
-			FileInputStream fileInputStream = new FileInputStream(file);
+		try (FileInputStream fileInputStream = new FileInputStream(file)) {
 
 			//Create Workbook instance holding reference to .xlsx file
 			XSSFWorkbook workbook = new XSSFWorkbook(fileInputStream);
@@ -113,21 +144,22 @@ public class HandleExcel {
 			{
 				Row row = rowIterator.next();
 				Cell cell = row.getCell(0);
+				Cell newCell = null;
 				if (Cell.CELL_TYPE_NUMERIC == cell.getCellType()) {
 					Double cellValue = cell.getNumericCellValue();
-					cell.setCellValue(cellValue * 2d);
+					newCell = row.createCell(0, Cell.CELL_TYPE_NUMERIC);
+					newCell.setCellValue(cellValue * 2d);
 				}
 				cell = row.getCell(1);
 				if (Cell.CELL_TYPE_STRING == cell.getCellType()) {
 					String cellValue = cell.getStringCellValue();
-					cell.setCellValue("UPDATED: " + cellValue);
-					System.out.println(cell.getStringCellValue());
+					newCell = row.createCell(0, Cell.CELL_TYPE_STRING);
+					newCell.setCellValue("UPDATED: " + cellValue);
 				}
 			}
-			fileInputStream.close();
-			FileOutputStream fileOutputStream = new FileOutputStream(file);
-			workbook.write(fileOutputStream);
-			fileOutputStream.close();
+			try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+				workbook.write(fileOutputStream);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
