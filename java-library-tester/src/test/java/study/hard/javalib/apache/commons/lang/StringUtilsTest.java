@@ -22,4 +22,14 @@ public class StringUtilsTest {
 		logger.debug("index: {}", index);
 	}
 
+	@Test
+	public void findNthOccurrenceOfCharacterInString2() {
+		String ip = "123.456.789.012";
+		int index = StringUtils.ordinalIndexOf(ip, ".", 2);
+		assertEquals(7, index);
+		logger.debug("index: {}", index);
+		ip = ip.substring(0, StringUtils.ordinalIndexOf(ip, ".", 2));
+		assertEquals("123.456", ip);
+	}
+
 }
