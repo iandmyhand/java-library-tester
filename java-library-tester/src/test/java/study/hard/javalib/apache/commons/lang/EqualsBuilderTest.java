@@ -9,6 +9,7 @@ import org.junit.Test;
 import study.hard.javalib.entity.User;
 
 /**
+ * 
  * @author SeomGi, Han(iandmyhand@gmail.com)
  */
 public class EqualsBuilderTest {
