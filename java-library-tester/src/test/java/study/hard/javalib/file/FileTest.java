@@ -23,8 +23,16 @@ public class FileTest {
 		System.out.println("Absolute path of temporary file: " + tempFile.getAbsolutePath());
 	}
 
+	@Test
+	public void testGetTempDirectoryPath() {
+		File tempDirectory = new File(System.getProperty("java.io.tmpdir"));
+		System.out.println(tempDirectory);
+	}
+
 	@After
 	public void clean() {
-		tempFile.delete();
+		if (tempFile != null) {
+			tempFile.delete();
+		}
 	}
 }
