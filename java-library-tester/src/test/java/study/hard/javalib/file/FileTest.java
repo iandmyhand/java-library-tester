@@ -9,17 +9,17 @@ import org.junit.Test;
 
 public class FileTest {
 
-	HandleFile handleFile;
+	FileHandler fileHandler;
 	File tempFile;
 
 	@Before
 	public void setUp() {
-		handleFile = new HandleFile();
+		fileHandler = new FileHandler();
 	}
 
 	@Test
 	public void testCreateTempFile() throws IOException {
-		tempFile = handleFile.getTempFile("TEST_TEMP_FILE.txt");
+		tempFile = fileHandler.getTempFile("TEST_TEMP_FILE.txt");
 		System.out.println("Absolute path of temporary file: " + tempFile.getAbsolutePath());
 	}
 

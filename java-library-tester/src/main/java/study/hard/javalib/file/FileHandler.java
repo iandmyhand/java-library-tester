@@ -3,7 +3,7 @@ package study.hard.javalib.file;
 import java.io.File;
 import java.io.IOException;
 
-public class HandleFile {
+public class FileHandler {
 
 	File getTempFile() throws IOException {
 		return getTempFile("TEMP_FILE");
