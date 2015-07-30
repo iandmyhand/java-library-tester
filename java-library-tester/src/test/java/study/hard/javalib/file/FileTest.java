@@ -26,7 +26,7 @@ public class FileTest {
 	@Test
 	public void testGetTempDirectoryPath() {
 		File tempDirectory = new File(System.getProperty("java.io.tmpdir"));
-		System.out.println(tempDirectory);
+		System.out.println("Absolute path of temporary directory: " + tempDirectory);
 	}
 
 	@After
