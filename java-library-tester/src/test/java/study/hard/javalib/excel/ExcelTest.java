@@ -13,27 +13,27 @@ public class ExcelTest {
 
 	private static final Logger logger = LoggerFactory.getLogger(ExcelTest.class);
 
-	private HandleExcel handleExcel;
+	private ExcelHandler excelHandler;
 	private File tempFile;
 
 	@Before
 	public void setUp() throws IOException {
 		logger.debug("##### Set up to handle excel.");
-		handleExcel = new HandleExcel();
-		tempFile = handleExcel.createTemporaryExcelFile();
+		excelHandler = new ExcelHandler();
+		tempFile = excelHandler.createTemporaryExcelFile();
 		logger.debug("Absolute path of test file: {}", tempFile.getAbsolutePath());
 	}
 
 	@Test
 	public void testExcelWriteAndRead() {
 		logger.debug("\n##### Write excel test.");
-		handleExcel.writeExcel(tempFile);
+		excelHandler.writeExcel(tempFile);
 		logger.debug("\n##### Read excel test.");
-		handleExcel.readExcel(tempFile);
+		excelHandler.readExcel(tempFile);
 		logger.debug("\n##### Update excel test.");
-		handleExcel.updateExcel(tempFile);
+		excelHandler.updateExcel(tempFile);
 		logger.debug("\n##### Read excel test.");
-		handleExcel.readExcel(tempFile);
+		excelHandler.readExcel(tempFile);
 	}
 
 	@After

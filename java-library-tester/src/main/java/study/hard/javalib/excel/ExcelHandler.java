@@ -21,9 +21,9 @@ import org.slf4j.LoggerFactory;
 
 import study.hard.javalib.exception.BaseException;
 
-public class HandleExcel {
+public class ExcelHandler {
 
-	private static final Logger logger = LoggerFactory.getLogger(HandleExcel.class);
+	private static final Logger logger = LoggerFactory.getLogger(ExcelHandler.class);
 
 	private static final String EXCEL_FILE_EXTENSION = "xlsx";
 	private static final String TEMP_DIR_PREFIX = "TEMP_DIR_";
