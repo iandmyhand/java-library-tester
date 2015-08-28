@@ -18,7 +18,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-import study.hard.javalib.commons.enumeration.SortType;
+import study.hard.javalib.commons.enumeration.SortDirection;
 import study.hard.javalib.entity.User;
 import study.hard.javalib.entity.UserHasComplexKey;
 import ch.lambdaj.collection.LambdaCollections;
@@ -162,7 +162,7 @@ public class LambdajTest {
 
 	@Test
 	public void testSortingByDescending() {
-		List<User> sortedList = sort(userList, on(User.class).getAge(), SortType.DESCENDING.getOrdering());
+		List<User> sortedList = sort(userList, on(User.class).getAge(), SortDirection.DESCENDING.getOrdering());
 		println("Test sorting:", sortedList);
 	}
 
