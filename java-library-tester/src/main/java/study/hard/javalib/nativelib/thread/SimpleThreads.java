@@ -31,13 +31,13 @@ public class SimpleThreads {
 
 	public static void main(String args[]) throws InterruptedException {
 		// Delay, in milliseconds before we interrupt MessageLoop thread (default one hour).
-		long patience = 2000; // 1000 * 60 * 60;
+		long patience = 1000 * 60 * 60;
 
 		// If command line argument present, gives patience in seconds.
 		if (0 < args.length) {
 			try {
-				System.out.format("Argument is %s", args[0]);
 				patience = Long.parseLong(args[0]) * 1000;
+				System.out.format("Argument is %o%n", patience);
 			} catch (NumberFormatException e) {
 				System.err.println("Argument must be an integer.");
 				System.exit(1);
@@ -57,6 +57,7 @@ public class SimpleThreads {
 
 			// Wait maximum of 1 second for MessageLoop thread to finish.
 			t.join(1000);
+			System.out.format("\t( System.currentTimeMillis()-startTime: %o / patience: %o )%n", System.currentTimeMillis() - startTime, patience);
 			if (((System.currentTimeMillis() - startTime) > patience) && t.isAlive()) {
 				threadMessage("Tired of waiting!");
 				t.interrupt();
