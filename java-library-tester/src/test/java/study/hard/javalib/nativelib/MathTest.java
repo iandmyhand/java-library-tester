@@ -36,13 +36,13 @@ public class MathTest {
 
 	@Test
 	public void ceil() {
-		logger.debug("(3 / 7): " + (3 / 7));
-		logger.debug("(3D / 7D): " + (3D / 7D));
-		logger.debug("Math.ceil(3 / 7): " + Math.ceil(3 / 7));
-		logger.debug("Math.ceil(3D / 7D): " + Math.ceil(3D / 7D));
-		logger.debug("(int)Math.ceil(3 / 7): " + (int)Math.ceil(3 / 7));
-		logger.debug("(int)Math.ceil(3D / 7D): " + (int)Math.ceil(3D / 7D));
-		logger.debug("(int)Math.ceil((double)3 / (double)7): " + (int)Math.ceil((double)3 / (double)7));
+		logger.debug("(3 / 7): " + (3 / 7)); // 0
+		logger.debug("(3D / 7D): " + (3D / 7D)); // 0.42857142857142855
+		logger.debug("Math.ceil(3 / 7): " + Math.ceil(3 / 7)); // 0.0
+		logger.debug("Math.ceil(3D / 7D): " + Math.ceil(3D / 7D)); // 1.0
+		logger.debug("(int)Math.ceil(3 / 7): " + (int)Math.ceil(3 / 7)); // 0
+		logger.debug("(int)Math.ceil(3D / 7D): " + (int)Math.ceil(3D / 7D)); // 1
+		logger.debug("(int)Math.ceil((double)3 / (double)7): " + (int)Math.ceil((double)3 / (double)7)); // 1
 	}
 
 }
