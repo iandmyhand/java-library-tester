@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
 
 import com.google.common.collect.Lists;
 
-public class PatternTest {
+public class RegexTest {
 
-	static final Logger logger = LoggerFactory.getLogger(PatternTest.class);
+	static final Logger logger = LoggerFactory.getLogger(RegexTest.class);
 
 	static final Pattern IP_PATTERN_WITH_SUBNET = Pattern.compile("^([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])(\\.([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])){0,3}$");
 
