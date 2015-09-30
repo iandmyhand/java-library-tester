@@ -6,6 +6,9 @@ public class GetClassTest {
 		GetClassTest tester = new GetClassTest();
 		ExtendedClassA extendedA = tester.new ExtendedClassA();
 		extendedA.printClass(); // class study.hard.javalib.nativelib.GetClassTest$ExtendedClassA
+
+		Class<? extends ClassA> clazz = extendedA.getClass();
+		System.out.println(clazz.getName());
 	}
 
 	public class ClassA {
