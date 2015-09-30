@@ -7,8 +7,13 @@ public class GetClassTest {
 		ExtendedClassA extendedA = tester.new ExtendedClassA();
 		extendedA.printClass(); // class study.hard.javalib.nativelib.GetClassTest$ExtendedClassA
 
-		Class<? extends ClassA> clazz = extendedA.getClass();
-		System.out.println(clazz.getName());
+		Class<? extends ClassA> clazz1 = extendedA.getClass();
+		System.out.println(clazz1.getName());
+
+		Class<? extends ClassA> clazz2 = ExtendedClassA.class;
+		System.out.println(clazz2.getName());
+
+		System.out.println(clazz1 == clazz2);
 	}
 
 	public class ClassA {
