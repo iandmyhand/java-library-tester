@@ -3,59 +3,55 @@ Personal test codes for variety open source Java libraries.
 
 
 
-## Tested libraries
-
-
-
-### Apache Commons Lang
+## Apache Commons Lang
 - Reference: https://commons.apache.org/proper/commons-lang/
 
-#### EqualsBuilder
+### EqualsBuilder
 - Reference: http://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/builder/EqualsBuilder.html
 
 
 
-### Collection
+## Collection
 
-#### Lambdaj
+### Lambdaj
 - Reference: https://code.google.com/p/lambdaj/
 
 
 
-### Documents
+## Documents
 
-#### Apache POI
+### Apache POI
 - Reference: https://poi.apache.org
 
 
 
-### Files
+## Files
 
-#### Java File
+### Java File
 - Reference: http://docs.oracle.com/javase/8/docs/api/java/io/File.html
 
 
 
-### Json
+## Json
 
-#### Jackson
+### Jackson
 - Reference: http://jackson.codehaus.org/
 
 
 
-### Logging
+## Logging
 
-#### slf4j
+### slf4j
 - Reference: http://www.slf4j.org/
 
 
 
-### Time
+## Time
 
-#### Calendar and Date
+### Calendar and Date
 - Reference: 
     - Calendar: https://docs.oracle.com/javase/8/docs/api/java/util/Calendar.html
     - Date: https://docs.oracle.com/javase/8/docs/api/java/util/Date.html
 
-#### JodaTime
+### JodaTime
 - Reference: http://www.joda.org/joda-time/
