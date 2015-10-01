@@ -7,7 +7,7 @@ import org.junit.Test;
 public class PrimitiveTypeTest {
 
 	@Test
-	public void test() throws UnsupportedEncodingException {
+	public void testGetNumericValue() throws UnsupportedEncodingException {
 		getInt("A");
 		getInt("Z");
 	}
@@ -16,6 +16,13 @@ public class PrimitiveTypeTest {
 		char ch = str.charAt(0);
 		int x = Character.getNumericValue(ch);
 		System.out.println(x);
+	}
+
+	@Test
+	public void testEqualToOperator() {
+		int a = 1;
+		int b = 1;
+		System.out.println(a == b); // true
 	}
 
 }
