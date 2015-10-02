@@ -5,14 +5,22 @@ public class EqualsTest {
 	public static void main(String[] args) {
 		EqualsTest tester = new EqualsTest();
 
-		tester.testEqualToOperator();
+		tester.testEqualToOperator1();
+
+		tester.testEqualToOperator2();
 
 		tester.testEqualsNotOverrided();
 
 		tester.testEqualsOverrided();
 	}
 
-	public void testEqualToOperator() {
+	public void testEqualToOperator1() {
+		Object a = new Object();
+		Object b = a;
+		System.out.println(a == b); // true
+	}
+
+	public void testEqualToOperator2() {
 		Object a = new Object();
 		Object b = new Object();
 		System.out.println(a == b); // false
@@ -60,6 +68,7 @@ public class EqualsTest {
 			if (obj == this) {
 				return true;
 			}
+
 			if (obj == null || obj.getClass() != this.getClass()) {
 				return false;
 			}
