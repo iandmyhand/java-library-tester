@@ -12,7 +12,7 @@ import org.apache.commons.lang.time.DateUtils;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CalendarTest {
+public class CalendarAndDateTest {
 
 	private Date now;
 	private Date fromDate;
