@@ -1,17 +1,24 @@
 package study.hard.javalib.encodingstring;
 
+import static org.junit.Assert.*;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import study.hard.javalib.lang.URLUtils;
 
 public class EncodingStringTest {
 
 	private Logger logger = LoggerFactory.getLogger(EncodingStringTest.class);
 
-	@org.junit.Test
+	private static final String encodedUrl = "%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%9E%85%EB%8B%88%EB%8B%A4."; // 테스트입니다.
+
+	@Test
 	public void testEncodeRelatedToKorean() {
 		String tmpString = "테스트";
 		System.out.println("UTF-8: " + convertEncoding(tmpString, "UTF-8"));
@@ -20,6 +27,18 @@ public class EncodingStringTest {
 		System.out.println("CP933: " + convertEncoding(tmpString, "CP933"));
 
 		testEncoding(tmpString);
+	}
+
+	@Test
+	public void testDecodingURL() throws UnsupportedEncodingException {
+		String result = java.net.URLDecoder.decode(encodedUrl, "UTF-8");
+		System.out.println("result: " + result);
+	}
+
+	@Test
+	public void testIsUrlEncoded() {
+		assertTrue(URLUtils.isURLEncoded(encodedUrl));
+		assertFalse(URLUtils.isURLEncoded("테스트"));
 	}
 
 	private String convertEncoding(String str, String encoding) {
