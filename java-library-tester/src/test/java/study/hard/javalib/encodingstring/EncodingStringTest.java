@@ -36,9 +36,12 @@ public class EncodingStringTest {
 	}
 
 	@Test
-	public void testIsUrlEncoded() {
-		assertTrue(URLUtils.isURLEncoded(encodedUrl));
-		assertFalse(URLUtils.isURLEncoded("테스트"));
+	public void testContainsURLEncodedPart() {
+		assertTrue(URLUtils.containsURLEncodedPart(encodedUrl));
+		assertTrue(URLUtils.containsURLEncodedPart(encodedUrl + "테스트"));
+
+		assertFalse(URLUtils.containsURLEncodedPart("테스트"));
+		assertFalse(URLUtils.containsURLEncodedPart(null));
 	}
 
 	private String convertEncoding(String str, String encoding) {

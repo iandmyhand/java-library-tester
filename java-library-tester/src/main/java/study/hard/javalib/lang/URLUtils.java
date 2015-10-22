@@ -6,7 +6,7 @@ import org.apache.commons.lang.StringUtils;
 
 public class URLUtils {
 
-	public static boolean isURLEncoded(String str) {
+	public static boolean containsURLEncodedPart(String str) {
 		if (StringUtils.isBlank(str)) {
 			return false;
 		}
