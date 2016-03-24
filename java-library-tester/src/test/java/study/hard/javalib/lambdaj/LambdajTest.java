@@ -139,6 +139,13 @@ public class LambdajTest {
 		println("select first", selectedUser);
 		assertNotNull(selectedUser);
 	}
+	
+	@Test
+	public void testSelectMax() {
+		User selectedUser = selectMax(userList, on(User.class).getAge());
+		println("select first", selectedUser);
+		assertNotNull(selectedUser);
+	}
 
 	@Test(expected = NullPointerException.class)
 	public void testSelectFirstWhenIfNotExist() {
