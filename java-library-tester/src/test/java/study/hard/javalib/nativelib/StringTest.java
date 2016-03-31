@@ -45,5 +45,10 @@ public class StringTest {
 		tmp = tmp.substring(0, 5);
 		System.out.println("tmp: [" + tmp + "]");
 	}
+	
+	@Test
+	public void testFormating() {
+		System.out.println(String.format("A color of %s is the %s.", "Banana", "yellow"));
+	}
 
 }

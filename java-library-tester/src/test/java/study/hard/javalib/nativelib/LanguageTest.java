@@ -1,5 +1,7 @@
 package study.hard.javalib.nativelib;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +11,13 @@ import study.hard.javalib.commons.entity.BasisObject;
 public class LanguageTest {
 
 	private static Logger logger = LoggerFactory.getLogger(LanguageTest.class);
+	
+	@Test
+	public void testCompareLong() {
+		long a = 0L;
+		long b = 10L;
+		assertTrue(0 >= a || 0 >= b);
+	}
 
 	@Test
 	public void testStaticVariable() {
