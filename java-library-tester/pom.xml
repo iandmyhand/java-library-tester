@@ -6,7 +6,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<java-version>1.7</java-version>
+		<java-version>1.8</java-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<source-encoding>UTF-8</source-encoding>
 		<resource-encoding>UTF-8</resource-encoding>
@@ -15,14 +15,14 @@
 		<commons.lang.version>2.6</commons.lang.version>
 		
 		<!-- Spring Framework -->
-		<spring.version>4.1.5.RELEASE</spring.version>
+		<spring.version>4.2.6.RELEASE</spring.version>
 
 		<!-- Test Util versions-->
 		<mockito.version>1.9.0</mockito.version>
 		<junit.version>4.11</junit.version>
 
 		<!-- Collections Util versions -->
-		<lambdaj.version>2.4</lambdaj.version>
+		<lambdaj.version>2.3.3</lambdaj.version>
 		<guava.version>17.0</guava.version>
 		<cglib.version>2.2.2</cglib.version>
 		<commons-collections.version>3.2.2</commons-collections.version>
@@ -45,15 +45,16 @@
 	</properties>
 
 	<repositories>
-		<repository>
-			<id>codehaus</id>
-			<url>https://nexus.codehaus.org/content/repositories/releases</url>
-		</repository>
-		<repository>
-			<id>lambdaj</id>
-			<name>Lambdaj Repository</name>
-			<url>http://lambdaj.googlecode.com/svn/repo/releases/</url>
-		</repository>
+	  <repository>
+        <id>gradle</id>
+        <url>http://gradle.artifactoryonline.com/gradle/libs/</url>
+        <releases>
+           <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>false</enabled>
+        </snapshots>
+     </repository>
 	</repositories>
 
 	<dependencies>
