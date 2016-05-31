@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.test.context.TestPropertySource;
 
 public class MathTest {
 
@@ -21,6 +22,17 @@ public class MathTest {
 		ratio = 0D;
 		result = 0D;
 		logger.debug("amount: {} / ratio: {} / result: {}", new Object[] {amount, ratio, result});
+	}
+
+	@Test
+	public void divide() {
+		int a = 29;
+		int b = 30;
+		System.out.println(String.format("%d / %d == %d", a, b, (a / b)));
+        assertEquals(0, (a / b));
+        assertEquals(0, (1 / 30));
+        assertEquals(0, (0 / 30));
+        assertEquals(1, (30 / 30));
 	}
 
 	@Test
