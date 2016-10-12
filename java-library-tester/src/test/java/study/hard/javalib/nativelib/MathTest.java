@@ -2,6 +2,8 @@ package study.hard.javalib.nativelib;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -33,6 +35,7 @@ public class MathTest {
         assertEquals(0, (1 / 30));
         assertEquals(0, (0 / 30));
         assertEquals(1, (30 / 30));
+		System.out.println(String.format("%d / %d == %f", 10, 3, (10 / 3.0)));
 	}
 
 	@Test
@@ -68,6 +71,34 @@ public class MathTest {
 		logger.debug("(int)Math.ceil(3 / 7): " + (int)Math.ceil(3 / 7)); // 0
 		logger.debug("(int)Math.ceil(3D / 7D): " + (int)Math.ceil(3D / 7D)); // 1
 		logger.debug("(int)Math.ceil((double)3 / (double)7): " + (int)Math.ceil((double)3 / (double)7)); // 1
+	}
+
+	@Test
+	public void divisor() {
+		int sum = divisorSum(16);
+		System.out.println(String.format("%d", sum));
+	}
+
+	public int divisorSum(int n) {
+		List<Integer> list = divisors(n, 2, new ArrayList<Integer>() {{ if(0 < n) add(1); if(1 < n) add(n); }});
+		int r = 0;
+		for(int i: list) {
+			System.out.println(String.format("%d", i));
+			r += i;
+		}
+		return r;
+	}
+
+	private List<Integer> divisors(int n, int d, List<Integer> r) {
+		if(n / d <= d) {
+			return r;
+		} else {
+			if(n % d == 0) {
+				r.add(d);
+				r.add(n / d);
+			}
+			return divisors(n, d + 1, r);
+		}
 	}
 
 }
